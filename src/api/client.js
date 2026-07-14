@@ -4,7 +4,7 @@
 // - Unwraps the { success, message, data } envelope every controller returns
 // - Throws a normalized ApiError so callers/contexts can show `error.message`
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export class ApiError extends Error {
   constructor(message, status, details) {
