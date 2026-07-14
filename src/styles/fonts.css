@@ -1,0 +1,12 @@
+/* Cotamila Coffee — Green Caramel Typography
+   Display: "Playfair Display" — an elegant serif for headings, matching
+   the Green Caramel theme's warm, upscale coffeehouse feel.
+   Body/UI: "DM Sans" — clean, friendly sans for POS data density.
+   These feed the --font-sans / --font-display tokens registered in theme.css,
+   so Tailwind's `font-sans` / `font-display` utilities pick them up directly. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+}
