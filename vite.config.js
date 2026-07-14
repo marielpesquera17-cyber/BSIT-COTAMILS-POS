@@ -31,7 +31,26 @@ export default defineConfig({
     },
   },
 
-  assetsInclude: ['**/*.svg', '**/*.csv'],
+  // ── Dev proxy ──────────────────────────────────────────────────────────
+  // All requests to /api/* are forwarded to the Vercel backend by the Vite
+  // dev server. The browser only ever talks to localhost:5173, so the
+  // httpOnly "token" cookie is a FIRST-PARTY cookie and is stored/sent
+  // normally. This fixes the 401 "No token provided" errors and the
+  // logout-on-refresh problem in development.
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://bsit-cotamils-pos-server.vercel.app',
+        changeOrigin: true,
+        secure: true,
+        // Strip any Domain=... attribute the backend might set on the
+        // cookie so it attaches to localhost instead of vercel.app
+        cookieDomainRewrite: '',
+      },
+    },
+  },
+
+  assetsInclude: ['*/.svg', '*/.csv'],
 
   build: {
     rollupOptions: {
